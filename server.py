@@ -5,17 +5,17 @@ import websockets
 async def hello(websocket, path):
     while True:
         try:
-            name = await websocket.recv()
+            message = await websocket.recv()
         except websockets.ConnectionClosed:
             break
-        print(f"Client said: {name}")
+        print(f"Client said: {message}")
 
-        asghar = f"Hello {name}"
+        response = f"The mighty server telling ya {message}"
         try:
-            await websocket.send(asghar)
+            await websocket.send(response)
         except webscokets.ConnectionClosed:
             break
-        print(f"Server said: {asghar}")
+        print(f"Server said: {response}")
 
 
 start_server = websockets.serve(hello, "localhost", 8765)
