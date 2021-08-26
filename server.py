@@ -10,12 +10,12 @@ async def hello(websocket, path):
             break
         print(f"Client said: {name}")
 
-        greetings = f"Hello {name}"
+        asghar = f"Hello {name}"
         try:
-            await websocket.send(greetings)
+            await websocket.send(asghar)
         except webscokets.ConnectionClosed:
             break
-        print(f"Server said: {greetings}")
+        print(f"Server said: {asghar}")
 
 
 start_server = websockets.serve(hello, "localhost", 8765)
